@@ -577,7 +577,14 @@ public class AssertionTest {
         StringComparator<String> comparator = new StringComparator<String>();
         Assert.assertGreaterThan(s1, s2, comparator);
     }
-
+    
+    @Test
+    public void greaterThanPrimitives() {
+        int x = 5;
+        int y = 4;
+        Assert.assertGreaterThanPrimitives(x, y);
+    }
+    
     private class StringComparator<T> implements Comparator<T> {
 
         public int compare(T o1, T o2) {
