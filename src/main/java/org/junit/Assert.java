@@ -706,8 +706,8 @@ public class Assert {
         assertTrue(esito>0);
     }
     
-    public static void assertGreaterThanPrimitives(double p1, double p2, java.util.Comparator<T> comparator) {
-        int esito = comparator.compare(p1, p2);
+    public static void assertGreaterThanPrimitives(double p1, double p2) {
+        int esito = p1-p2;
         assertTrue(esito>0);
     }
     /**
