@@ -701,6 +701,10 @@ public class Assert {
         assertEquals(null, expected, actual, delta);
     }
 
+    static public <T> void assertGreaterThan(T o1, T o2, java.util.Comparator<T> comparator) {
+        int esito = comparator.compare(o1, o2);
+        assertTrue(esito>0);
+    }
     /**
      * Asserts that an object isn't null. If it is an {@link AssertionError} is
      * thrown with the given message.
