@@ -16,6 +16,7 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Comparator;
 
 import org.junit.Assert;
 import org.junit.ComparisonFailure;
@@ -568,7 +569,33 @@ public class AssertionTest {
         Object o = new Object();
         assertNotSame(o, o);
     }
+    
+    @Test
+    public <T> void greaterThan() {
+        String s1 = "pippo";
+        String s2 = "pluto";
+        StringComparator<String> comparator = new StringComparator<String>();
+        Assert.assertGreaterThan(s1, s2, comparator);
+    }
 
+    private class StringComparator<T> implements Comparator<T> {
+
+        public int compare(T o1, T o2) {
+            try {
+                if(o1 instanceof String && o2 instanceof String) {
+                    String o1S = (String) o1;
+                    String o2S = (String) o2;
+                    return o1S.compareTo(o2S);
+                } else
+                    throw new Exception();
+            } catch(Exception e) {
+                System.out.println("not two strings");
+                return -1000;
+            }
+            
+        }
+        
+    }
     @Test
     public void sameWithMessage() {
         try {
